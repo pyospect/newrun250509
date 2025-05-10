@@ -1,0 +1,203 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 68, 64, 60; /* Stone-700 for text */
+  --background-rgb: 245, 245, 245; /* Light gray background */
+  --primary-rgb: 251, 146, 60; /* Orange-400 as primary */
+  --secondary-rgb: 253, 186, 116; /* Orange-300 as secondary */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-rgb: 15, 23, 42;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-rgb));
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+.chat-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  padding-bottom: 70px; /* 입력창 영역 확보 */
+}
+
+.chat-window {
+  flex: 1;
+  position: relative;
+  overflow-y: auto;
+  z-index: 1;
+  border-radius: 16px;
+  background-color: rgba(255, 255, 255, 0.7);
+  margin: 0 8px;
+}
+
+.chat-bubble {
+  padding: 8px 12px;
+  margin-bottom: 16px;
+  font-size: 16px;
+  line-height: 150%;
+  color: #44403C;
+}
+
+.chat-bubble-user {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 0px 0px 0px 40px;
+  width: 100%;
+}
+
+.chat-bubble-user-content {
+  background-color: #FFFFFF;
+  border-radius: 20px;
+  padding: 12px 16px;
+  max-width: 80%;
+  width: fit-content;
+}
+
+.chat-bubble-ai {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px 40px 0px 0px;
+  width: 100%;
+}
+
+.chat-bubble-ai-content {
+  max-width: 80%;
+  width: fit-content;
+  padding: 12px 16px;
+  border-radius: 20px;
+  background-color: transparent;
+}
+
+/* Running plan card */
+.running-plan-card {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 16px 24px;
+  isolation: isolate;
+  max-width: 360px;
+  width: 100%;
+  height: 87px;
+  background: #FB923C;
+  border: 1px solid #FDBA74;
+  box-shadow: none;
+  backdrop-filter: blur(5px);
+  border-radius: 999px;
+  margin: 8px auto;
+  position: relative;
+}
+
+.running-plan-card-title {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 21px;
+  color: #FFF7ED;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.running-plan-card-details {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  color: #FED7AA;
+  width: 100%;
+}
+
+.chat-input-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 12px 16px;
+  gap: 12px;
+  background-color: transparent;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  margin-top: 12px;
+}
+
+.chat-input {
+  box-sizing: border-box;
+  width: 100%;
+  background: #FFFFFF;
+  border: 1px solid #E7E5E4;
+  border-radius: 16px;
+  padding: 12px 16px;
+  line-height: 1.5;
+  display: flex;
+  align-items: center;
+}
+
+/* Background blur effect */
+.blurred-circle {
+  position: fixed;
+  width: 520px;
+  height: 280px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: #FDBA74;
+  filter: blur(128px);
+  backdrop-filter: blur(128px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* 타이핑 인디케이터 스타일 */
+.typing-indicator {
+  display: flex;
+  align-items: center;
+}
+
+.typing-indicator span {
+  height: 8px;
+  width: 8px;
+  margin: 0 1px;
+  background-color: #9ca3af;
+  border-radius: 50%;
+  display: inline-block;
+  animation: bounce 1.5s infinite ease-in-out;
+}
+
+.typing-indicator span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-indicator span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes bounce {
+  0%, 60%, 100% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-4px);
+  }
+}
+
+/* 입력란 텍스트 컬러 명시적 지정 */
+textarea {
+  color: #44403C;
+} 
